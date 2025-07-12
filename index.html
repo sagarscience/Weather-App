@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="api.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card" aria-label="Weather Card">
+        <header>
+          <h2>
+            <i class="fa fa-location-dot"></i> <span id="location"></span>
+          </h2>
+        </header>
+
+        <h4><span id="temp"></span><sup>o</sup>C</h4>
+        <h6 id="weather"></h6>
+        <h6>Humidity: <span id="humidity"></span>%</h6>
+        <h6>Wind Speed: <span id="wind"></span> m/s</h6>
+
+        <img src="" alt="weather icon" id="icon" />
+        <button onclick="window.location.reload()" class="refresh">
+          <i class="fa fa-rotate-right"></i>
+        </button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
