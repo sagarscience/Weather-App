@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #343434;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 90vw;
+  max-width: 40rem;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #2c2c2c;
+  padding: 3rem;
+  border-radius: 2em;
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.4);
+  text-align: center;
+  width: 100%;
+}
+
+.card h4 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+
+.card p {
+  font-size: 1.2rem;
+  margin: 0.5em 0;
+  text-transform: capitalize;
+}
+
+.icon-wrapper,
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5em;
+}
+
+#icon {
+  width: 8em;
+  height: auto;
+}
+
+#refreshBtn {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: #9c9c9d;
+  border-radius: 50%;
+  box-shadow: 0.5em 0.25em 1em #252525, 0.3em 0.3em 1.2em #4a4a4a;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#refreshBtn:hover {
+  box-shadow: inset 0.5em 0.25em 1em #252525, inset 0.3em 0.3em 1.2em #4a4a4a;
+}
+
+/* Input form styling */
+form {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1.5em;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  padding: 0.7em 1em;
+  border-radius: 0.5em;
+  border: none;
+  font-size: 1rem;
+  width: 15rem;
+}
+
+button[type="submit"] {
+  padding: 0.7em 1em;
+  border-radius: 0.5em;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #357bd8;
+}

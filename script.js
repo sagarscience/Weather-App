@@ -1,30 +1,45 @@
-const link =
-  "https://api.openweathermap.org/data/2.5/weather?q=jhansi&appid=e5a38898ac3f9e33f6b1ec32b12bf374";
+const API_KEY = "e5a38898ac3f9e33f6b1ec32b12bf374";
+const cityInput = document.getElementById("cityInput");
+const form = document.getElementById("cityForm");
+const refreshBtn = document.getElementById("refreshBtn");
 
-const request = new XMLHttpRequest();
-request.open("GET", link, true);
+let currentCity = "Jhansi"; // default
 
-request.onload = function () {
-  if (request.status >= 200 && request.status < 400) {
-    const obj = JSON.parse(this.response);
-    console.log(obj);
+function fetchWeather(city) {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
-    document.getElementById("location").textContent = obj.name;
-    document.getElementById("weather").textContent = obj.weather[0].description;
-    document.getElementById("temp").textContent = Math.round(
-      obj.main.temp - 273.15
-    );
-    document.getElementById("humidity").textContent = obj.main.humidity;
-    document.getElementById("wind").textContent = obj.wind.speed;
-    document.getElementById("icon").src =
-      "https://openweathermap.org/img/wn/" + obj.weather[0].icon + "@2x.png";
-  } else {
-    console.error("The city data is not available");
+  fetch(url)
+    .then((res) => {
+      if (!res.ok) throw new Error("City not found");
+      return res.json();
+    })
+    .then((data) => {
+      currentCity = data.name;
+      document.getElementById("location").textContent = data.name;
+      document.getElementById("temp").textContent = Math.round(data.main.temp - 273.15);
+      document.getElementById("weather").textContent = data.weather[0].description;
+      document.getElementById("humidity").textContent = data.main.humidity;
+      document.getElementById("wind").textContent = data.wind.speed;
+      document.getElementById("icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    })
+    .catch((error) => {
+      alert("Error fetching weather: " + error.message);
+    });
+}
+
+// On form submit
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const city = cityInput.value.trim();
+  if (city !== "") {
+    fetchWeather(city);
   }
-};
+});
 
-request.onerror = function () {
-  console.error("Network error occurred");
-};
+// On refresh button click
+refreshBtn.addEventListener("click", () => {
+  fetchWeather(currentCity);
+});
 
-request.send();
+// Load default city on page load
+fetchWeather(currentCity);
